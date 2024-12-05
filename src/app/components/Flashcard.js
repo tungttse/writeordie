@@ -1,24 +1,16 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 
-const Flashcard = ({ question, answer }) => {
-  const [showAnswer, setShowAnswer] = React.useState(false);
-
-  const toggleShowAnswer = () => {
-    setShowAnswer(!showAnswer);
-  };
+const Flashcard = ({ front, back }) => {
+  const [flipped, setFlipped] = useState(false);
 
   return (
-    <div onClick={toggleShowAnswer} style={{ cursor: 'pointer' }}>
-      <h2>Question:</h2>
-      <p>{question}</p>
-      {showAnswer && (
-        <>
-          <h2>Answer:</h2>
-          <p>{answer}</p>
-        </>
-      )}
-    </div>
+    <motion.div
+      onClick={() => setFlipped(!flipped)}
+      className="w-64 h-40"
+      animate={{ rotateY: flipped ? 180 : 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      {flipped ? back : front}
+    </motion.div>
   );
 };
-
-export default Flashcard;
