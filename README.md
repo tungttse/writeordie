@@ -102,5 +102,11 @@ MIT License. Feel free to contribute and improve the project!
 
 📩 Contact
 
-For feature requests or feedback, reach out at [your email] or open an issue on GitHub.
+For feature requests or feedback, reach out at stefanitvn@gmail.com or open an issue on GitHub.
+
+https://www.upwork.com/freelancers/~019be0146d4b7f98d7
+
+
+Hobby project using Nextjs, tailwind UI
+
 
