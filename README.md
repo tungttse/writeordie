@@ -79,8 +79,8 @@ Collaboration Mode 👥 (Real-time co-writing feature)
 Installation
 
 # Clone the repository
-git clone https://github.com/yourusername/writeorbye.git
-cd writeorbye
+git clone https://github.com/tungttse/writeordie.git
+cd writeordie
 
 # Install dependencies
 npm install
