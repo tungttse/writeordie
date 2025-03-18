@@ -64,6 +64,9 @@ npm install
 
 # Run development server
 npm run dev
+
+# Run backend server
+node backend/server.js
 ```
 
 ### Environment Variables
