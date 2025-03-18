@@ -4,6 +4,8 @@
 
 **Write or Die** is a web-based productivity tool designed for writers who struggle with procrastination. The app enforces focused writing sessions by setting time constraints and consequences, ensuring users stay on track with their writing goals.
 
+![Homepage](./homepage.png)
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** Next.js, Tailwind CSS
