@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
+import CircularTimer from './components/CircularTimer';
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -11,6 +12,7 @@ export default function Home() {
   const [timer, setTimer] = useState(0);
   const [showWordTargetInput, setShowWordTargetInput] = useState(false);
   const [showTimerInput, setShowTimerInput] = useState(false);
+  const [isTimerActive, setIsTimerActive] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -58,22 +60,28 @@ export default function Home() {
     setShowTimerInput(true);
   };
 
-  const handleWordTargetSubmit = (event) => {
+  const handleWordTargetSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const target = event.target.elements.wordTarget.value;
+    const target = event.currentTarget.elements.namedItem('wordTarget') as HTMLInputElement;
     if (target) {
-      setWordTarget(parseInt(target, 10));
+      setWordTarget(parseInt(target.value, 10));
       setShowWordTargetInput(false);
     }
   };
 
-  const handleTimerSubmit = (event) => {
+  const handleTimerSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const time = event.target.elements.timer.value;
+    const time = event.currentTarget.elements.namedItem('timer') as HTMLInputElement;
     if (time) {
-      setTimer(parseInt(time, 10));
+      setTimer(parseInt(time.value, 10) * 60); // Convert minutes to seconds
+      setIsTimerActive(true);
       setShowTimerInput(false);
     }
+  };
+
+  const handleTimerTimeout = () => {
+    setIsTimerActive(false);
+    // Add any additional timeout logic here
   };
 
   const wordCount = text.trim().split(/\s+/).length;
@@ -228,6 +236,14 @@ export default function Home() {
           {wordCount} of {wordTarget}
         </div>
       </div>
+
+      {/* Circular Timer */}
+      {isTimerActive && (
+        <CircularTimer
+          initialTime={timer}
+          onTimeout={handleTimerTimeout}
+        />
+      )}
 
       {/* Word Target Modal */}
       {showWordTargetInput && (
